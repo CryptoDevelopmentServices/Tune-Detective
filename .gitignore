@@ -1,0 +1,7 @@
+/backend/node_modules
+/backend/package-lock.json
+
+/web/node_modules
+/web/package-lock.json
+/mobile/node_modules
+/mobile/package-lock.json
