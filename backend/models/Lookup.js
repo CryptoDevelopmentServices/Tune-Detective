@@ -1,13 +1,8 @@
 const mongoose = require('mongoose');
 
 const LookupSchema = new mongoose.Schema({
-  userId: String,
-  fingerprint: String,
-  result: {
-    title: String,
-    artist: String,
-    source: { type: String, enum: ['acoustid', 'mongodb'] }
-  },
+  query: String,
+  result: Object,
   createdAt: { type: Date, default: Date.now }
 });
 

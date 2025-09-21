@@ -1,19 +1,22 @@
-version: '3.9'
+version: '3'
 services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
   backend:
     build: ./backend
     ports:
       - "5000:5000"
     environment:
-      - MONGO_URI=mongodb://mongo:27017/tune-detective
-      - ACOUSTID_KEY=YOUR_ACOUSTID_KEY
+      - MONGO_URI=mongodb://mongo:27017/tunedetective
+      - ACOUSTID_KEY=your_acoustid_api_key
     depends_on:
       - mongo
-  mongo:
-    image: mongo:6
+  frontend:
+    build: ./frontend
     ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db
-volumes:
-  mongo_data:
+      - "3000:3000"
+    depends_on:
+      - backend
