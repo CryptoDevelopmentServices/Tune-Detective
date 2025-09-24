@@ -1,25 +1,27 @@
-# 🎶 Tune Detective
+# Tune Detective
 
-Identify songs by audio or lyrics.
+🎵 Song recognition app with offline + online support, built with React (PWA) + Express + MongoDB.
 
-## 🚀 Run without Docker
-1. Start MongoDB locally
-2. Setup backend:
+## Features
+- Online & offline support (PWA + caching)
+- AcoustID + Musixmatch + Spotify fallback
+- MongoDB caching of past searches
+- Works with or without Docker
+
+## Setup
+1. Copy `.env.example` to `.env` in backend and fill in your API keys
+2. Install dependencies:
    ```bash
-   cd backend
-   cp .env.example .env
-   npm install
-   npm start
+   cd backend && npm install
+   cd ../frontend && npm install
    ```
-3. Setup frontend:
+3. Run locally without Docker:
    ```bash
-   cd frontend
-   npm install
-   npm start
+   cd backend && npm start
+   cd frontend && npm run dev
+   ```
+4. With Docker:
+   ```bash
+   docker-compose up --build
    ```
 
-## 🐳 Run with Docker
-```bash
-docker-compose up
-```
-Then open frontend on [http://localhost:3000](http://localhost:3000)
