@@ -1,0 +1,12 @@
+{
+  "name": "tune-detective",
+  "private": true,
+  "workspaces": ["frontend", "backend"],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c green,blue \"npm run dev --workspace tune-detective-backend\" \"npm run dev --workspace tune-detective-frontend\"",
+    "build": "npm run build --workspace tune-detective-frontend",
+    "start": "npm run start --workspace tune-detective-backend",
+    "install:all": "npm install"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}

@@ -1,13 +1,15 @@
-version: '3'
 services:
   backend:
     build: ./backend
     ports:
       - "5000:5000"
     env_file:
-      - ./backend/.env.example
-    depends_on:
-      - mongo
+      - ./backend/.env
+    environment:
+      SQLITE_PATH: /app/data/tune-detective.sqlite
+      PORT: 5000
+    volumes:
+      - tune-detective-data:/app/data
 
   frontend:
     build: ./frontend
@@ -16,12 +18,5 @@ services:
     depends_on:
       - backend
 
-  mongo:
-    image: mongo:5
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-
 volumes:
-  mongo-data:
+  tune-detective-data:
